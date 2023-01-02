@@ -43,11 +43,6 @@ const Cointable = () => {
         },
         fontFamily: "Montserrat",
     })
-    const CustomPage = styled(Pagination)({
-        "& .MuiPaginationItem-root": {
-        color: "gold",
-    }
-    })
     const handleSearch = () => {
         return coins.filter(
           (coin) =>
@@ -169,13 +164,14 @@ const Cointable = () => {
                     </Table>
                 )}
             </TableContainer>
-            <CustomPage
+            <Pagination
             style={{
                 padding: 20,
                 width: "100%",
                 display: "flex",
                 justifyContent: "center",
               }}
+              color="primary"
             count={(handleSearch()?.length/10).toFixed(0)}
             onChange={(_, value) => {
                 setPage(value);
