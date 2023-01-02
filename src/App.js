@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 
 import Header from './Components/Header';
@@ -14,7 +14,7 @@ function App() {
     minHeight: '100vh',
   });
   return (
-    <BrowserRouter>
+    <HashRouter>
     <MyComponent>
       <div>
         <Header />
@@ -24,7 +24,7 @@ function App() {
         </Routes>
       </div>
     </MyComponent>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
