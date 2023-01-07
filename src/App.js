@@ -1,5 +1,6 @@
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Alert from "./Components/Alert"
 
 import Header from './Components/Header';
 import Homepage from './Pages/Homepage';
@@ -24,6 +25,7 @@ function App() {
         </Routes>
       </div>
     </MyComponent>
+    <Alert />
     </HashRouter>
   );
 }

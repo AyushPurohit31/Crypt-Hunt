@@ -5,15 +5,17 @@ import { CryptoState } from '../CryptoContext';
 import { SingleCoin } from '../config/api';
 import CoinInfo from '../Components/CoinInfo';
 import { styled } from '@mui/material/styles';
-import { LinearProgress, Typography } from '@mui/material';
+import { Button, LinearProgress, Typography } from '@mui/material';
 import { numberWithCommas } from '../Components/Banner/Carousel'
 import HTMLReactParser from 'html-react-parser';
+import { doc, setDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 
 const Coinpage = () => {
   
   const { id } = useParams();
   const [coin , setcoin] = useState();
-  const { currency, symbol } = CryptoState();
+  const { currency, symbol, user, watchlist, setAlert} = CryptoState();
 
   const fetchCoin = async () => {
     const { data } = await axios.get(SingleCoin(id));
@@ -80,6 +82,52 @@ const Sidebar = styled('div')(({ theme }) => ({
   marginTop: 25,
   borderRight: "2px solid grey",
 }));
+ 
+const inWatchList = watchlist.includes(coin?.id);
+
+const handleWatchListButton = async() => {
+  const coinRef = doc(db, "watchlist", user.uid);
+  try {
+    //creating a doc using setDoc
+    await setDoc(coinRef, 
+        {coins:watchlist?[...watchlist, coin.id] : [coin.id]}
+      );
+
+      setAlert({
+        open : true,
+        message: coin.name + " added to watchlist",
+        type : "success"
+      })
+  } catch (error) {
+    setAlert({
+      open : true,
+      message: error.message,
+      type : "error"
+    })
+  }
+}
+
+const removeFromWatchList = async() => {
+  const coinRef = doc(db, "watchlist", user.uid);
+  try {
+    await setDoc(coinRef, 
+        {coins : watchlist.filter((watch)=>watch!==coin?.id)},
+        {merge : "true"}
+      );
+
+      setAlert({
+        open : true,
+        message: coin.name + " removed from watchlist",
+        type : "success"
+      })
+  } catch (error) {
+    setAlert({
+      open : true,
+      message: error.message,
+      type : "error"
+    })
+  }
+}
 
 if (!coin) return <LinearProgress style={{ backgroundColor: "gold" }} />;
 
@@ -151,6 +199,20 @@ if (!coin) return <LinearProgress style={{ backgroundColor: "gold" }} />;
               M
             </Typography>
           </span>
+          {user && (
+            <Button
+              variant='outlined'
+              style={{
+                width : "1005",
+                height : 40,
+                backgroundColor : inWatchList?"#ff0000":"#EEBC1D",
+                color : "black"
+              }}
+              onClick = {inWatchList?removeFromWatchList : handleWatchListButton}
+            >
+              {inWatchList ? "Remove from watchlist" : "Add to watchlist"}
+            </Button>
+          )}
         </Marketdata>
       </Sidebar>
       <CoinInfo coin={coin}/>
