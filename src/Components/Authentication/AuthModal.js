@@ -19,7 +19,7 @@ const style = {
   p: 4,
 };
 
-const Google = styled(Box)({
+const GoogleBox = styled(Box)({
     padding: 24,
     paddingTop: 17,
     display: "flex",
@@ -91,13 +91,13 @@ export default function AuthModal() {
             </Box>
             {value===0 && <Login handleClose = {handleClose}/>}
             {value===1 && <Signup handleClose = {handleClose}/>}
-            <Google>
+            <GoogleBox>
               <span>OR</span>
               <GoogleButton 
               style={{width : "100%", outline : "none"}}
               onClick = {signInWithGoogle}
               />
-            </Google>
+            </GoogleBox>
         </Box>
       </Modal>
     </div>
