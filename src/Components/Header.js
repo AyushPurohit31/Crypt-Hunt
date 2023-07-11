@@ -11,7 +11,7 @@ import UserSideBar from './Authentication/UserSideBar';
 const Header = () => {
     const Component = styled('div')({
         flex : 1,
-        color : "gold",
+        color : "#DCFE50",
         fontFamily : "Montserrat",
         fontWeight : "bold",
         cursor : "pointer"
@@ -34,7 +34,7 @@ const Header = () => {
             <Toolbar>
             <Component>
             <Typography variant='h5' onClick = {()=>navigate("/")}>
-                <Box sx={{ fontWeight:'bold', fontFamily: 'Montserrat', m: 1 }}>CRYPT HUNT</Box>
+                <Box sx={{ fontWeight:'bold', fontFamily: 'Montserrat', m: 1 }}>COINBASE</Box>
             </Typography>
             </Component>
             <Select variant='outlined' style={{

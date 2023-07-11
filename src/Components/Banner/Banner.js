@@ -4,7 +4,7 @@ import React from 'react'
 import Carousel from './Carousel';
 
 const Mybanner = styled('div')({
-    backgroundImage : "url(./banner2.jpg)",
+    backgroundColor : "#232323"
 });
 
 const BannerContent = styled(Container)({

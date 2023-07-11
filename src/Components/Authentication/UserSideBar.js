@@ -25,7 +25,7 @@ export default function UserSideBar() {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "#EEBC1D",
+    backgroundColor: "#DCFE50",
     boxShadow: "0 0 10px black",
   })
 
@@ -56,7 +56,7 @@ export default function UserSideBar() {
   const LogoutButton = styled(Button)({
     height: "8%",
     width: "100%",
-    backgroundColor: "#EEBC1D",
+    backgroundColor: "#DCFE50",
     marginTop: 20,
     color : "black"
   })
@@ -74,7 +74,7 @@ export default function UserSideBar() {
     width: 120,
     height: 120,
     cursor: "pointer",
-    backgroundColor: "#EEBC1D",
+    backgroundColor: "#DCFE50",
     objectFit: "contain",
   }) 
 

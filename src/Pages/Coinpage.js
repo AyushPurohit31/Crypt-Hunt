@@ -205,7 +205,7 @@ if (!coin) return <LinearProgress style={{ backgroundColor: "gold" }} />;
               style={{
                 width : "1005",
                 height : 40,
-                backgroundColor : inWatchList?"#ff0000":"#EEBC1D",
+                backgroundColor : inWatchList?"#ff0000":"#DCFE50",
                 color : "black"
               }}
               onClick = {inWatchList?removeFromWatchList : handleWatchListButton}

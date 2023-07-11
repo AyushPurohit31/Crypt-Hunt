@@ -63,10 +63,10 @@ const Cointable = () => {
             </TextField>
             <TableContainer>
                 {loading?(
-                    <LinearProgress style={{backgroundColor: "gold"}} />
+                    <LinearProgress style={{backgroundColor: "#DCFE50"}} />
                 ):(
                     <Table>
-                        <TableHead style={{backgroundColor : "#EEBC1D"}}>
+                        <TableHead style={{backgroundColor : "#DCFE50"}}>
                         <TableRow>
                             {["Coin", "Price", "24h Change", "Market Cap"].map((head) => (
                                 <TableCell
